@@ -1,4 +1,4 @@
 ## Docker images for testing untrusted pull request code
 
-See [node-forward/build](https://github.com/node-forward/build-containers) for more information about this project.
+See [node-forward/build](https://github.com/node-forward/build) for more information about this project.
 
