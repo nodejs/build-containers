@@ -5,6 +5,6 @@ RUN apt-get install -y --force-yes build-essential python-all curl
 
 RUN adduser node-forward --disabled-password --gecos 'Node Forward'
 
-VOLUME [ "/opt/node/" ]
+VOLUME [ "/opt/iojs/" ]
 
-CMD su node-forward -c 'cd /opt/node/ && make clean && ./configure && make -j8 && make test-simple'
+CMD su node-forward -c 'cd /opt/iojs/ && make clean && ./configure && make -j8 && make test-simple'
