@@ -6,7 +6,7 @@ RUN apt-get install -y --force-yes build-essential python-all curl
 RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get clean
 
-RUN adduser iojs --disabled-password --gecos 'IO.js'
+RUN adduser iojs --disabled-password --gecos 'io.js'
 
 VOLUME [ "/opt/iojs/" ]
 
