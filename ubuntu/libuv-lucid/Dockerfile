@@ -1,7 +1,13 @@
 FROM ubuntu:lucid
 
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y --force-yes build-essential automake libtool python-all curl
+RUN apt-get update && \
+    apt-get install -y --force-yes \
+      build-essential \
+      automake \
+      libtool \
+      python-all \
+      curl && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN adduser node-forward --disabled-password --gecos 'Node Forward'
 
