@@ -18,7 +18,7 @@ VOLUME [ "/opt/libuv/" ]
 CMD mkdir /build && \
     cp -a /opt/libuv /build/libuv && \
     chown -R iojs /build/libuv && \
-    su iojs -c 'cd /build/iojs && \
+    su iojs -c 'cd /build/libuv && \
       sh autogen.sh && \
       ./configure && \
       make -j8 && \
