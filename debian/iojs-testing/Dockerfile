@@ -14,4 +14,11 @@ RUN useradd iojs && \
 
 VOLUME [ "/opt/iojs/" ]
 
-CMD su iojs -c 'cd /opt/iojs/ && make clean && ./configure && make -j8 && make test-simple'
+CMD mkdir /build && \
+    cp -a /opt/iojs /build/iojs && \
+    chown -R iojs /build/iojs && \
+    su iojs -c 'cd /build/iojs && \
+      make clean && \
+      ./configure && \
+      make -j8 && \
+      make test-simple'

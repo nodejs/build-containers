@@ -19,8 +19,15 @@ RUN apt-get update && \
       /usr/bin/g++ g++ /usr/bin/g++-4.8 50 && \
     rm -rf /var/lib/apt/lists/*
 
-RUN adduser node-forward --disabled-password --gecos 'Node Forward'
+RUN adduser iojs --disabled-password --gecos 'io.js'
 
 VOLUME [ "/opt/iojs/" ]
 
-CMD su node-forward -c 'cd /opt/iojs/ && make clean && ./configure && make -j8 && make test-simple'
+CMD mkdir /build && \
+    cp -a /opt/iojs /build/iojs && \
+    chown -R iojs /build/iojs && \
+    su iojs -c 'cd /build/iojs && \
+      make clean && \
+      ./configure && \
+      make -j8 && \
+      make test-simple'
