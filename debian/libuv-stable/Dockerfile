@@ -16,4 +16,11 @@ RUN useradd iojs && \
 
 VOLUME [ "/opt/libuv/" ]
 
-CMD su iojs -c 'cd /opt/libuv/ && sh autogen.sh && ./configure && make -j8 && make check'
+CMD mkdir /build && \
+    cp -a /opt/libuv /build/libuv && \
+    chown -R iojs /build/libuv && \
+    su iojs -c 'cd /build/iojs && \
+      sh autogen.sh && \
+      ./configure && \
+      make -j8 && \
+      make check'
