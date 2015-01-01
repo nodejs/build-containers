@@ -2,16 +2,20 @@ FROM debian:stable
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo 'deb http://http.debian.net/debian/ jessie main non-free contrib' >> /etc/apt/sources.list
-
-ADD apt-preferences /etc/apt/preferences
+RUN apt-get update && \
+    apt-get install -y --force-yes \
+      apt-transport-https curl && \
+    echo 'deb https://deb.nodesource.com/weezy-gcc49 weezy-gcc49 main' >> /etc/apt/sources.list && \
+    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && \
     apt-get install -y --force-yes \
-      gcc g++ cpp g++-4.9 gcc-4.9 cpp-4.9 libstdc++-4.9-dev libcloog-isl4 libmpc3 \
-      libgcc-4.9-dev libatomic1 libcilkrts5 libc6 libc6-dev libc-dev-bin && \
-    apt-get install -y --force-yes \
-      make python-all curl && \
+      g++-4.9 gcc-4.9 cpp-4.9 \
+      make python-all && \
+    ln -sf /usr/bin/gcc-4.9 /usr/bin/gcc && \
+    ln -sf /usr/bin/gcc-4.9 /usr/bin/cc && \
+    ln -sf /usr/bin/g++-4.9 /usr/bin/g++ && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd iojs && \

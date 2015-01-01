@@ -1,7 +1,0 @@
-Package: *
-Pin: release n=wheezy
-Pin-Priority: 900
-
-Package: cpp gcc g++ g++-4.9 gcc-4.9 libc6 libmpfr4 binutils libisl10 libgcc1 libgomp1 libitm1 libquadmath0 libstdc++6 libc-dev libc6-dev libc-dev-bin
-Pin: release n=jessie
-Pin-Priority: 910
