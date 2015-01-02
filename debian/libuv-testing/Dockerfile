@@ -22,5 +22,5 @@ CMD mkdir /build && \
     su iojs -c 'cd /build/libuv && \
       sh autogen.sh && \
       ./configure && \
-      make -j8 && \
+      make -j4 && \
       make check'

@@ -29,5 +29,5 @@ CMD mkdir /build && \
     su iojs -c 'cd /build/iojs && \
       make clean && \
       ./configure && \
-      make -j8 && \
+      make -j4 && \
       make test-simple'
