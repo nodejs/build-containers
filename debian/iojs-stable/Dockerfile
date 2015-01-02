@@ -4,9 +4,18 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
     apt-get install -y --force-yes \
-      build-essential \
-      python-all \
-      curl && \
+      apt-transport-https curl && \
+    echo 'deb https://deb.nodesource.com/weezy-gcc49 weezy-gcc49 main' >> /etc/apt/sources.list && \
+    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && \
+    apt-get install -y --force-yes \
+      g++-4.9 gcc-4.9 cpp-4.9 \
+      make python-all && \
+    ln -sf /usr/bin/gcc-4.9 /usr/bin/gcc && \
+    ln -sf /usr/bin/gcc-4.9 /usr/bin/cc && \
+    ln -sf /usr/bin/g++-4.9 /usr/bin/g++ && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd iojs && \
