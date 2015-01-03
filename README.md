@@ -13,13 +13,13 @@ For more information, please refer to: [https://github.com/iojs/build](https://g
 
 ### Quick
 
-    docker run -a stdin -a stdout -a stdin -t --rm -v /local/path/to/iojs:/opt/iojs iojs/build:iojs-ubuntu-trusty
+    docker run -itv /local/path/to/iojs:/opt/iojs --rm iojs/build:iojs-ubuntu-trusty
 
 This will download already built images from [iojs's Docker hub repo](https://registry.hub.docker.com/u/iojs/build/) and build io.js from the source set on the `-v` option.
 
 If you want to build `libuv` use this command:
 
-    docker run -a stdin -a stdout -a stdin -t --rm -v /local/path/to/libuv:/opt/libuv iojs/build:libuv-ubuntu-trusty
+    docker run -itv /local/path/to/libuv:/opt/libuv --rm iojs/build:libuv-ubuntu-trusty
 
 The `ubuntu-trusty` at the end can be changed by any of the following for either `libuv` and `iojs`:
 
@@ -37,8 +37,8 @@ If you want to build `iojs` on a debian testing container then from the root of 
 
 This will create an image called `iojs-debian-testing` and you can run it doing:
 
-    docker run -v /path/to/your/iojs/source:/opt/iojs iojs-debian-testing
+    docker run -itv /path/to/your/iojs/source:/opt/iojs --rm iojs-debian-testing
 
 For reference, the Jenkins build server for io.js runs the following command:
 
-    docker run -a stdin -a stdout -a stdin -t --rm -v ${PWD}:/opt/node/ node-forward-ci:node-${DISTRO}
+    docker run -a stdout -a stderr -t --rm -v `pwd`:/opt/iojs/ iojs/build:iojs-${DISTRO}
