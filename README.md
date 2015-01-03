@@ -37,7 +37,7 @@ If you want to build `iojs` on a debian testing container then from the root of 
 
 This will create an image called `iojs-debian-testing` and you can run it doing:
 
-    docker run -itv /path/to/your/iojs/source:/opt/iojs iojs-debian-testing
+    docker run -itv /path/to/your/iojs/source:/opt/iojs --rm iojs-debian-testing
 
 For reference, the Jenkins build server for io.js runs the following command:
 
