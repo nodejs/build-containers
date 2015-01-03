@@ -30,5 +30,5 @@ CMD mkdir /build && \
     su iojs -c 'cd /build/iojs && \
       make clean && \
       ./configure && \
-      make -j4 && \
+      make -j$(expr $(expr $(nproc) + 1) / 2) && \
       make test-simple'
